@@ -1,20 +1,36 @@
-import React from 'react';
-import {Card, ListGroup} from 'react-bootstrap'
+import React from 'react'
+import styled from 'styled-components';
 
-const People = ({name, mass, skinColor, height}) => {
+const CardStyle = styled.div`
+width: 100%;
+font-size: 1.5em;
+color: black;
+text-align:center;
+margin-right:5px;
+flex-direction: row;
+justify-content: space-between;
+background: white;
+`
+const Title = styled.h3`
+font-weight: bold;
+flex-direction: row;
+justify-content: space-evenly;
+`
+
+
+function Character(props) {
     return (
-            <Card border="danger" bg ='info' style={{ width: '19rem'}}>
-                <Card.Header>Starwars Character</Card.Header>
-                <Card.Body>
-                <Card.Title>Name : {name}</Card.Title>
-                <ListGroup bg = 'danger' variant="flush">
-                    <ListGroup.Item>Mass: {mass}</ListGroup.Item>
-                    <ListGroup.Item>Skin Color: {skinColor}</ListGroup.Item>
-                    <ListGroup.Item>Height: {height}</ListGroup.Item>
-                </ListGroup>
-                </Card.Body>
-            </Card>
+            <CardStyle>
+            <Title> {props.name} </Title> 
+            <p>Birthday: {props.birth_year}</p>
+            <p>Eyes color: {props.eye_color}</p>
+            <p>Height: {props.height}''</p>
+            <p>Mass: {props.mass}</p>
+            <p>Gender: {props.gender === "n/a" 
+                ? "It's a robot, duh!" 
+                : props.gender }</p>
+      </CardStyle>
     )
-} 
+}
 
-export default People
+export default Character ;
